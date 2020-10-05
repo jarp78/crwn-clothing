@@ -3,20 +3,26 @@ import { Link } from "react-router-dom";
 
 import CollectionItem from "../collection-item/collection-item.component";
 
-import "./collection-preview.styles.scss";
+import {
+  CollectionPreviewContainer,
+  TitleContainer,
+  PreviewContainer,
+} from "./collection-item.styles";
 
 const CollectionPreview = ({ title, items, routeName }) => (
-  <div className="collection-preview">
-    <h1 className="title">{title.toUpperCase()}</h1>
-    <Link className="link" to={`shop/${routeName}`}>Go to Collection</Link>
-    <div className="preview">
+  <CollectionPreviewContainer>
+    <TitleContainer>{title.toUpperCase()}</TitleContainer>
+    <Link className="link" to={`shop/${routeName}`}>
+      Go to Collection
+    </Link>
+    <PreviewContainer>
       {items
         .filter((item, idx) => idx < 4)
         .map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}
-    </div>
-  </div>
+    </PreviewContainer>
+  </CollectionPreviewContainer>
 );
 
 export default CollectionPreview;
